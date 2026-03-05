@@ -20,7 +20,7 @@ const renderText = (text, className, baseWeight = 400) => {
 };
 
 const setupTextHover = (container, type) => {
-  if (!container) return;
+  if (!container) return () => {};
 
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHTS[type];
@@ -62,16 +62,14 @@ const Welcome = () => {
   const subTitleRef = useRef(null);
 
   useGSAP(() => {
-    const titleCleanup= setupTextHover(titleRef.current, "title");
-    const subtitleCleanup= setupTextHover(subTitleRef.current, "subtitle");
+    const titleCleanup = setupTextHover(titleRef.current, "title");
+    const subtitleCleanup = setupTextHover(subTitleRef.current, "subtitle");
 
-    return ()=>{
-        subtitleCleanup();
-        titleCleanup();
-    }
+    return () => {
+      subtitleCleanup();
+      titleCleanup();
+    };
   }, []);
-
-  
 
   return (
     <section id="welcome">
