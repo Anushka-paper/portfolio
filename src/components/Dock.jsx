@@ -2,9 +2,12 @@ import { useRef } from "react";
 import { dockApps } from "#constants/index.js";
 import { Tooltip } from "react-tooltip";
 import { useGSAP } from "@gsap/react";
+import useWindowStore from "#store/window.js";
+
 import gsap from "gsap";
 
 const Dock = () => {
+  const { openWindow, closeWindow, windows } = useWindowStore();
   const dockRef = useRef(null);
 
   useGSAP(() => {
@@ -16,7 +19,7 @@ const Dock = () => {
       const { left } = dock.getBoundingClientRect();
 
       icons.forEach((icon) => {
-        const { left:iconLeft, width } = icon.getBoundingClientRect();
+        const { left: iconLeft, width } = icon.getBoundingClientRect();
         const center = iconLeft - left + width / 2;
         const distance = Math.abs(mouseX - center);
         const intensity = Math.exp(-(distance ** 2.5) / 20000);
@@ -40,15 +43,30 @@ const Dock = () => {
       );
     dock.addEventListener("mousemove", handleMouseMove);
     dock.addEventListener("mouseleave", resetIcons);
-    
+
     return () => {
       dock.removeEventListener("mousemove", handleMouseMove);
       dock.removeEventListener("mouseleave", resetIcons);
-    }
-  },[]);
+    };
+  }, []);
 
   const toggleApp = (app) => {
     // TODO Implement Open Window Logic
+    if (!app.canOpen) return;
+    
+    const window = windows[app.id];
+
+    if(!window){
+        console.warn(`No window config found for ${app.id}`);
+        return;
+    }
+
+    if (window.isOpen) {
+      closeWindow(app.id);
+    } else {
+      openWindow(app.id);
+    }
+
   };
 
   return (
