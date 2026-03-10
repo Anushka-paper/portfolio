@@ -77,52 +77,69 @@ const dockApps = [
 const blogPosts = [
   {
     id: 1,
-    date: "Sep 2, 2025",
+    date: "Figma Design",
     title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
+      "FarmConnet App UI",
     image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+    link: "https://www.figma.com/proto/N3Dgep0xC0JW4A4yoM6U7p/Farm-Connect?node-id=1-7&p=f&t=FD55XsAwhpK5OkBp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
   },
   {
     id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
+    date: "Canva",
+    title: "Graphic design",
     image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    link: "https://www.canva.com/design/DAG0fI2x80I/AAtdvp8dO-j5oKoOfKAMNg/view?utm_content=DAG0fI2x80I&utm_campaign=designshare&utm_medium=link&utm_source=viewer",
   },
   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
+    date: "YouTube Channel",
+    title: "Graphics Designer of Gully Experts",
     image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    link: "https://www.youtube.com/@GullyExpertscricket/videos",
+  },
+  {
+    id: 4,
+    date: "Figma Design",
+    title:
+      "Portfolio UI",
+    image: "/images/blog4.png",
+    link: "https://www.figma.com/proto/F1bk9m2VwOX8qS5Utg7KQG/Portfolio?node-id=3-33&p=f&t=6s49D07zhLrD2A2A-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
   },
 ];
 
 const techStack = [
   {
+    category: "Languages",
+    items: ["C/C++", "JavaScript", "Python", "Java"],
+  },
+  {
     category: "Frontend",
-    items: ["React.js", "Next.js", "TypeScript"],
+    items: ["React.js", "Next.js"],
+  },
+  {
+    category: "Design",
+    items: ["Figma", "Responsive Design", "Prototyping"],
+  },
+  {
+    category: "Styling",
+    items: ["Tailwind CSS", "CSS"],
   },
   {
     category: "Mobile",
     items: ["React Native", "Expo"],
   },
-  {
-    category: "Styling",
-    items: ["Tailwind CSS", "Sass", "CSS"],
-  },
+
   {
     category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Hono"],
+    items: ["Node.js"],
   },
   {
     category: "Database",
-    items: ["MongoDB", "PostgreSQL"],
+    items: ["MongoDB"],
   },
   {
     category: "Dev Tools",
-    items: ["Git", "GitHub", "Docker"],
+    items: ["Git", "GitHub", "VS Code"],
   },
 ];
 
@@ -132,28 +149,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/Anushka-paper",
   },
   {
     id: 2,
-    text: "Platform",
+    text: "Codolio",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://codolio.com/profile/paperD",
   },
   {
     id: 3,
-    text: "Twitter/X",
-    icon: "/icons/twitter.svg",
+    text: "Instagram",
+    icon: "/icons/insta.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/anushka-singh-d123",
   },
 ];
 
@@ -225,7 +242,7 @@ const WORK_LOCATION = {
     // ▶ Project 1
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "FarmConnect",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
@@ -233,30 +250,30 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "FarmConnect.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
+            "Built responsive e-commerce platform with React.js/Tailwind CSS, reducing user navigation time by 40%.",
+            "Engineered core frontend features and managed agile workflow for 4 developers, improving delivery by 25%.",
+            "Leading mobile app development with React Native to expand platform reach and user engagement.",
             "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
           ],
         },
         {
           id: 2,
-          name: "nike.com",
+          name: "FarmConnect.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
+          href: "https://farmconnect-alpha.vercel.app/",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "nike.png",
+          name: "FarmConnect.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -269,7 +286,7 @@ const WORK_LOCATION = {
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://www.figma.com/proto/N3Dgep0xC0JW4A4yoM6U7p/Farm-Connect?node-id=1-7&p=f&t=FD55XsAwhpK5OkBp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
           position: "top-60 right-20",
         },
       ],
@@ -278,7 +295,7 @@ const WORK_LOCATION = {
     // ▶ Project 2
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "TechSrijan ’26",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -286,25 +303,23 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "TechSrijan ’26.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
-          ],
+            "Contributed to the development of the TechSrijan ’26 event website by implementing UI components and pages using React.js",
+            "Assisted in creating responsive layouts and basic design elements for improved user engagement.",
+            ],
         },
         {
           id: 2,
-          name: "ai-resume-analyzer.com",
+          name: "TechSrijan ’26.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          href: "https://techsrijan-green.vercel.app/",
           position: "top-20 left-20",
         },
         {
@@ -318,11 +333,11 @@ const WORK_LOCATION = {
         },
         {
           id: 5,
-          name: "Design.fig",
+          name: "GitHub.com",
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://github.com/Anushka-paper/techsrijan_1",
           position: "top-60 left-5",
         },
       ],
@@ -331,7 +346,7 @@ const WORK_LOCATION = {
     // ▶ Project 3
     {
       id: 7,
-      name: "Food Delivery App",
+      name: "SherLocked",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -339,30 +354,29 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Food Delivery App Project.txt",
+          name: "SherLocked.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
+            "Built a React.js visual puzzle game featuring interactive UI components and complex game state logic.",
+            "Engineered a real-time leaderboard with scoring algorithms that tracked user rankings and boosted replay rates.",
+            "Optimized component rendering and API calls for seamless gameplay and instantaneous leaderboard updates. ",
           ],
         },
         {
           id: 2,
-          name: "food-delivery-app.com",
+          name: "SherLocked.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
+          href: "https://sherlocked-henna.vercel.app/",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "food-delivery-app.png",
+          name: "SherLocked.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -371,11 +385,11 @@ const WORK_LOCATION = {
         },
         {
           id: 5,
-          name: "Design.fig",
+          name: "GitHub.com",
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://github.com/Anushka-paper/Sherlocked",
           position: "top-60 right-20",
         },
       ],
@@ -397,7 +411,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/anushka.jpg",
     },
     {
       id: 2,
@@ -406,16 +420,16 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/gal4.png",
     },
     {
       id: 3,
-      name: "conference-me.png",
+      name: "happy-me.png",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/gal2.png",
     },
     {
       id: 4,
@@ -425,10 +439,10 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/anushka2.jpg",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
+        "Hey! I’m Anushka 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
+        "I love making things feel smooth, fast, and just a little bit delightful.",
         "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
         "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
       ],
