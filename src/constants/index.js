@@ -78,8 +78,7 @@ const blogPosts = [
   {
     id: 1,
     date: "Figma Design",
-    title:
-      "FarmConnet App UI",
+    title: "FarmConnect App UI",
     image: "/images/blog1.png",
     link: "https://www.figma.com/proto/N3Dgep0xC0JW4A4yoM6U7p/Farm-Connect?node-id=1-7&p=f&t=FD55XsAwhpK5OkBp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
   },
@@ -100,8 +99,7 @@ const blogPosts = [
   {
     id: 4,
     date: "Figma Design",
-    title:
-      "Portfolio UI",
+    title: "Portfolio UI",
     image: "/images/blog4.png",
     link: "https://www.figma.com/proto/F1bk9m2VwOX8qS5Utg7KQG/Portfolio?node-id=3-33&p=f&t=6s49D07zhLrD2A2A-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
   },
@@ -163,7 +161,7 @@ const socials = [
     text: "Instagram",
     icon: "/icons/insta.svg",
     bg: "#ff866b",
-    link: "",
+    link: null,  //TODO: add insta
   },
   {
     id: 4,
@@ -311,7 +309,7 @@ const WORK_LOCATION = {
           description: [
             "Contributed to the development of the TechSrijan ’26 event website by implementing UI components and pages using React.js",
             "Assisted in creating responsive layouts and basic design elements for improved user engagement.",
-            ],
+          ],
         },
         {
           id: 2,
@@ -388,7 +386,7 @@ const WORK_LOCATION = {
           name: "GitHub.com",
           icon: "/images/plain.png",
           kind: "file",
-          fileType: "fig",
+          fileType: "url",
           href: "https://github.com/Anushka-paper/Sherlocked",
           position: "top-60 right-20",
         },
