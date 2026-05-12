@@ -91,17 +91,17 @@ const blogPosts = [
   },
   {
     id: 3,
-    date: "YouTube Channel",
-    title: "Graphics Designer of Gully Experts",
-    image: "/images/blog3.png",
-    link: "https://www.youtube.com/@GullyExpertscricket/videos",
-  },
-  {
-    id: 4,
     date: "Figma Design",
     title: "Portfolio UI",
     image: "/images/blog4.png",
     link: "https://www.figma.com/proto/F1bk9m2VwOX8qS5Utg7KQG/Portfolio?node-id=3-33&p=f&t=6s49D07zhLrD2A2A-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
+  },
+  {
+    id: 4,
+    date: "YouTube Channel",
+    title: "Graphics Designer of Gully Experts",
+    image: "/images/blog3.png",
+    link: "https://www.youtube.com/@GullyExpertscricket/videos",
   },
 ];
 
@@ -168,7 +168,7 @@ const socials = [
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/in/anushka-singh-d123",
+    link: "www.linkedin.com/in/anushka-singh-d123",
   },
 ];
 
@@ -322,7 +322,7 @@ const WORK_LOCATION = {
         },
         {
           id: 4,
-          name: "ai-resume-analyzer.png",
+          name: "TechSrijan ’26.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -392,6 +392,57 @@ const WORK_LOCATION = {
         },
       ],
     },
+    
+    // ▶ Project 4
+    {
+      id: 8,
+      name: "Design Portfolio",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-10 left-80",
+      windowPosition: "top-[50vh] left-7",
+      children: [
+        {
+          id: 1,
+          name: "Design Portfolio.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 right-10",
+          description: [
+            "Crafting compelling visual narratives through posters, brochures, presentations, and brand identities. Turning ideas into stunning designs.",
+          ],
+        },
+        {
+          id: 2,
+          name: "Design Portfolio.com",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://design-portfolio-gilt.vercel.app/",
+          position: "top-20 left-20",
+        },
+        {
+          id: 4,
+          name: "Design Portfolio.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-52 left-80",
+          imageUrl: "/images/project-4.png",
+        },
+        {
+          id: 5,
+          name: "GitHub.com",
+          icon: "/images/plain.png",
+          kind: "file",
+          fileType: "fig",
+          href: "https://github.com/Anushka-paper/design_portfolio",
+          position: "top-60 left-5",
+        },
+      ],
+    },
+
   ],
 };
 
