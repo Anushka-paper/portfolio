@@ -399,7 +399,7 @@ const WORK_LOCATION = {
       name: "Design Portfolio",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-80",
+      position: "top-60 left-80",
       windowPosition: "top-[50vh] left-7",
       children: [
         {
