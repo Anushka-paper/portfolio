@@ -442,6 +442,55 @@ const WORK_LOCATION = {
         },
       ],
     },
+    // ▶ Project 5
+    {
+      id: 9,
+      name: "Ghost AI",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-30 left-50",
+      windowPosition: "top-[10vh] left-30",
+      children: [
+        {
+          id: 1,
+          name: "Ghost AI.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 right-10",
+          description: [
+            "3 weeks of coding, debugging, and learning culminated in Ghost AI. ⚡ It’s a robust editor workspace powered by Next.js and Trigger.dev. I’m really proud of the interactive canvas and architecture behind it.",
+          ],
+        },
+        {
+          id: 2,
+          name: "Ghost AI.com",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://ghost-ai-gilt.vercel.app/editor",
+          position: "top-20 left-20",
+        },
+        {
+          id: 4,
+          name: "Ghost AI.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-52 left-80",
+          imageUrl: "/images/project-5.png",
+        },
+        {
+          id: 5,
+          name: "GitHub.com",
+          icon: "/images/plain.png",
+          kind: "file",
+          fileType: "fig",
+          href: "https://github.com/Anushka-paper/ghost-ai",
+          position: "top-60 left-5",
+        },
+      ],
+    },
 
   ],
 };
