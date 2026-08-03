@@ -168,7 +168,7 @@ const socials = [
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "www.linkedin.com/in/anushka-singh-d123",
+    link: "https://www.linkedin.com/in/anushka-singh-d123/",
   },
 ];
 
