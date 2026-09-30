@@ -1,28 +1,14 @@
-import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
-
-import { Dock, Home, Navbar, Welcome } from "#components";
-import { Finder, Resume, Safari, Terminal, Text, Image, Contact, Photos } from "#windows";
-
-gsap.registerPlugin(Draggable);
+import { Route, Routes } from "react-router-dom";
+import { Desktop } from "#components";
+import AdminApp from "#admin/AdminApp.jsx";
 
 const App = () => {
   return (
-    <main>
-      <Navbar/>
-      <Welcome/>
-      <Dock/>
-      <Terminal/>
-      <Safari/>
-      <Resume/>
-      <Text/>
-      <Image/>
-      <Finder/>
-      <Contact/>
-      <Photos/>
-      <Home/>
-    </main>
+    <Routes>
+      <Route path="/*" element={<Desktop />} />
+      <Route path="/admin/*" element={<AdminApp />} />
+    </Routes>
   );
 };
 
-export default App
+export default App;

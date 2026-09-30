@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Georama:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 @import "tailwindcss";
 
@@ -16,6 +16,7 @@ body {
 @theme {
   --font-georama: "Georama", sans-serif;
   --font-roboto: "Roboto Mono", monospace;
+  --font-caveat: "Caveat", cursive;
   --breakpoint-3xl: 1920px;
 }
 
@@ -130,21 +131,21 @@ body {
     }
 
     .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto;
+      @apply bg-white p-10 max-w-3xl mx-auto max-h-[70vh] overflow-y-auto;
 
       h2 {
         @apply text-xl font-bold text-pink-600 mb-10;
       }
 
       .blog-post {
-        @apply grid grid-cols-12 space-x-5;
+        @apply flex items-start gap-5;
 
         img {
-          @apply size-full rounded-md object-cover;
+          @apply w-24 h-24 shrink-0 rounded-md object-cover;
         }
 
         .content {
-          @apply col-span-10 space-y-3;
+          @apply space-y-3 min-w-0;
 
           p {
             @apply text-xs text-gray-500;
@@ -237,7 +238,7 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-3xl max-h-[80vh] absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .sidebar {
       @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
@@ -266,30 +267,16 @@ body {
     }
 
     .gallery {
-      @apply p-5;
+      @apply flex-1 min-w-0 p-5 overflow-y-auto max-h-[calc(80vh-3.5rem)];
 
       ul {
-        @apply grid grid-cols-5 grid-rows-5 gap-2.5;
+        @apply grid grid-cols-3 gap-2.5;
 
         li {
+          @apply aspect-square overflow-hidden rounded-lg cursor-pointer;
+
           img {
             @apply size-full object-cover rounded-lg;
-          }
-
-          &:first-child {
-            @apply row-start-1 row-span-3 col-start-1 col-span-3;
-          }
-
-          &:nth-child(2) {
-            @apply row-start-1 row-span-3 col-start-4 col-span-2;
-          }
-
-          &:nth-child(3) {
-            @apply row-start-4 row-span-2 col-start-3 col-span-3;
-          }
-
-          &:last-child {
-            @apply row-start-4 row-span-2 col-start-1 col-span-2;
           }
         }
       }

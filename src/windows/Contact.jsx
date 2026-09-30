@@ -1,8 +1,9 @@
 import { WindowControls } from "#components";
-import { socials } from "#constants";
+import useContentStore from "#store/content";
 import WindowWrapper from "#hoc/WindowWrapper";
 
 const Contact = () => {
+  const socials = useContentStore((state) => state.socials);
   return (
     <>
 

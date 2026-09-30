@@ -1,9 +1,10 @@
 import { WindowControls } from "#components";
-import { techStack } from "#constants";
+import useContentStore from "#store/content";
 import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import { Check, Flag } from "lucide-react";
 
 const Terminal = () => {
+  const techStack = useContentStore((state) => state.techStack);
   return (
     <>
       <div id="window-header">

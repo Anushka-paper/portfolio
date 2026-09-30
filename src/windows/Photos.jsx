@@ -1,11 +1,13 @@
 import { WindowControls } from "#components";
-import { gallery, photosLinks } from "#constants";
 import WindowWrapper from "#hoc/WindowWrapper";
+import useContentStore from "#store/content";
 import useWindowStore from "#store/window";
 import { Mail, Search } from "lucide-react";
 
 const Photos = () => {
   const { openWindow } = useWindowStore();
+  const gallery = useContentStore((state) => state.gallery);
+  const photosLinks = useContentStore((state) => state.photosLinks);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { WindowControls } from "#components";
-import { blogPosts } from "#constants";
+import useContentStore from "#store/content";
 import WindowWrapper from "#hoc/WindowWrapper";
 import {
   ChevronLeft,
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 const Safari = () => {
+  const blogPosts = useContentStore((state) => state.blogPosts);
   return (
     <>
       <div id="window-header">

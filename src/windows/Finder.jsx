@@ -1,14 +1,16 @@
 import { WindowControls } from "#components";
-import { locations } from "#constants";
 import WindowWrapper from "#hoc/WindowWrapper";
+import useContentStore from "#store/content";
 import useLocationStore from "#store/location";
 import useWindowStore from "#store/window";
+import { positionToStyle } from "#utils/positionStyle";
 import clsx from "clsx";
 import { Search } from "lucide-react";
 
 const Finder = () => {
   const { openWindow } = useWindowStore();
   const { activeLocation, setActiveLocation } = useLocationStore();
+  const locations = useContentStore((state) => state.locations);
   const openItem = (item) => {
     if (item.fileType === "pdf") return openWindow("resume");
     if (item.kind === "folder") return setActiveLocation(item);
@@ -50,7 +52,7 @@ const Finder = () => {
           {activeLocation?.children?.map((item) => (
             <li
               key={item.id}
-              className={item.position}
+              style={positionToStyle(item.position)}
               onClick={() => openItem(item)}
             >
               <img src={item.icon} alt={item.name} />
