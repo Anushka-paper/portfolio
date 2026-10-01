@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 html,
 body {
   width: 100dvw;
@@ -11,6 +13,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+html.dark {
+  /* Dim the wallpaper via a blended overlay rather than `filter`, which
+     would also darken every descendant element's already-dark colors. */
+  background-color: rgba(0, 0, 0, 0.55);
+  background-blend-mode: multiply;
 }
 
 @theme {
@@ -38,33 +47,117 @@ body {
   }
 
   nav {
-    @apply flex justify-between items-center bg-white/80 backdrop-blur-3xl p-2 px-5 select-none;
+    /* text-black/dark:text-white here, not on individual elements: color
+       is inherited, so the logo text and nav-link buttons (which have no
+       color class of their own) pick this up automatically instead of
+       silently staying black-on-dark in dark mode. */
+    @apply flex justify-between items-center bg-white/80 dark:bg-neutral-900/80 backdrop-blur-3xl p-2 px-5 select-none text-black dark:text-white;
 
-    div {
+    /* Direct child only — a plain descendant selector here would match
+       any nested <div> anywhere inside <nav>, including popover panels
+       several levels deep, silently forcing them into a flex row. */
+    > div {
       @apply flex items-center max-sm:w-full max-sm:justify-center gap-5;
 
       &:last-child {
         @apply max-sm:hidden;
       }
-    }
 
-    ul {
-      @apply flex items-center gap-5 max-sm:hidden;
+      /* Also direct-child-scoped (nav > div > ul): the nav-links and
+         icon lists live one level under nav, inside these two <div>s.
+         A plain `ul` descendant selector here would also match the
+         search popover's results list (nested much deeper inside the
+         icon <div>), forcing it into a horizontal row instead of a
+         dropdown. */
+      > ul {
+        @apply flex items-center gap-5 max-sm:hidden;
 
-      p {
-        @apply text-sm cursor-pointer hover:underline transition-all;
+        p {
+          @apply text-sm cursor-pointer hover:underline transition-all;
+        }
       }
     }
 
     time {
-      @apply text-sm font-medium text-black;
+      @apply text-sm font-medium text-black dark:text-white;
     }
   }
 }
 
 @layer components {
   .icon {
-    @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
+    @apply p-1 hover:bg-gray-200 dark:hover:bg-neutral-700 rounded hover:cursor-default;
+  }
+
+  .nav-icon-wrap {
+    @apply relative;
+  }
+
+  .nav-icon--active {
+    @apply bg-blue-100 dark:bg-blue-900/50 rounded;
+  }
+
+  .nav-popover {
+    @apply absolute right-0 top-full mt-2 w-64 bg-white dark:bg-neutral-800 text-black dark:text-white border border-gray-200 dark:border-neutral-700 rounded-lg shadow-2xl p-3 space-y-2 z-50 text-sm;
+  }
+
+  /* Scoped to a dedicated class, not a bare `button` selector — a plain
+     element selector here would also match the Wi-Fi toggle switch
+     (also a <button>), overriding its own fixed width with `w-full`. */
+  .nav-popover__action {
+    @apply flex items-center gap-2 w-full px-2 py-1.5 rounded hover:bg-gray-100 dark:hover:bg-neutral-700 transition-colors text-left;
+  }
+
+  /* Flat (non-nested) rules for the BEM-style classes above — Tailwind
+     v4's CSS-nesting engine only lets `&` connect via combinators, it
+     can't paste `&__row` into a new `.nav-popover__row` identifier the
+     way Sass does, so each of these needs its own top-level selector. */
+  .nav-popover__row {
+    @apply flex items-center gap-2;
+  }
+
+  .nav-popover__row--muted {
+    @apply text-gray-500 dark:text-neutral-400;
+  }
+
+  .nav-popover__muted-text {
+    @apply text-gray-500 dark:text-neutral-400 text-xs;
+  }
+
+  .nav-popover__switch {
+    @apply w-9 h-5 rounded-full bg-gray-300 dark:bg-neutral-600 relative transition-colors;
+  }
+
+  .nav-popover__switch--on {
+    @apply bg-blue-500 dark:bg-blue-500;
+  }
+
+  .nav-popover__switch-knob {
+    @apply absolute top-0.5 left-0.5 size-4 rounded-full bg-white transition-transform;
+  }
+
+  .nav-popover__switch--on .nav-popover__switch-knob {
+    @apply translate-x-4;
+  }
+
+  .nav-popover__profile {
+    @apply flex items-center gap-3 pb-2 border-b border-gray-200 dark:border-neutral-700;
+
+    img {
+      @apply size-10 rounded-full object-cover;
+    }
+  }
+
+  .nav-popover__search-input {
+    @apply flex items-center gap-2 px-2 py-1.5 rounded border border-gray-200 dark:border-neutral-700;
+
+    input {
+      @apply flex-1 bg-transparent outline-none text-sm;
+    }
+  }
+
+  .nav-popover__results {
+    @apply flex flex-col mt-2 space-y-0.5 max-h-64 overflow-y-auto overflow-x-hidden;
   }
 
   #welcome {
@@ -83,7 +176,7 @@ body {
     @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
 
     .dock-container {
-      @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
+      @apply bg-white/20 dark:bg-black/30 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
     }
 
     .tooltip {
@@ -116,22 +209,22 @@ body {
   }
 
   #window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
+    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 dark:bg-neutral-800 border-b border-gray-200 dark:border-neutral-700 select-none text-sm text-gray-400;
   }
 
   #safari {
-    @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-4xl absolute top-40 left-2/12 bg-white dark:bg-neutral-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .search {
-      @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
+      @apply flex items-center gap-3 w-2/3 bg-white dark:bg-neutral-800 border border-gray-300 dark:border-neutral-700 rounded-lg px-3 py-2;
 
       input {
-        @apply placeholder:text-gray-400;
+        @apply placeholder:text-gray-400 dark:text-white;
       }
     }
 
     .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto max-h-[70vh] overflow-y-auto;
+      @apply bg-white dark:bg-neutral-900 p-10 max-w-3xl mx-auto max-h-[70vh] overflow-y-auto;
 
       h2 {
         @apply text-xl font-bold text-pink-600 mb-10;
@@ -148,11 +241,11 @@ body {
           @apply space-y-3 min-w-0;
 
           p {
-            @apply text-xs text-gray-500;
+            @apply text-xs text-gray-500 dark:text-neutral-400;
           }
 
           h3 {
-            @apply font-semibold text-base text-gray-800;
+            @apply font-semibold text-base text-gray-800 dark:text-neutral-100;
           }
 
           a {
@@ -164,7 +257,7 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl absolute top-32 left-1/12 bg-white dark:bg-neutral-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -210,7 +303,7 @@ body {
   }
 
   #contact {
-    @apply max-w-2xl absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-2xl absolute top-60 left-5/12 bg-white dark:bg-neutral-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -238,10 +331,10 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl max-h-[80vh] absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-3xl max-h-[80vh] absolute top-96 left-1/2 -translate-y-1/2 bg-white dark:bg-neutral-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .sidebar {
-      @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
+      @apply w-3/12 flex-none bg-gray-50 dark:bg-neutral-800 border-r border-gray-200 dark:border-neutral-700 flex flex-col p-5;
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -252,7 +345,7 @@ body {
           @apply flex space-y-1 items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors;
 
           &:first-child {
-            @apply bg-blue-100 text-blue-700;
+            @apply bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300;
           }
 
           img {
@@ -284,7 +377,7 @@ body {
   }
 
   #resume {
-    @apply w-fit h-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-fit h-fit absolute top-16 left-7/12 bg-white dark:bg-neutral-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       h2 {
@@ -297,7 +390,7 @@ body {
     @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
 
     .sidebar {
-      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
+      @apply w-48 bg-gray-50 dark:bg-neutral-800 border-r border-gray-200 dark:border-neutral-700 flex flex-col p-5 space-y-3;
 
       h3 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -307,11 +400,11 @@ body {
         @apply space-y-1;
 
         .active {
-          @apply bg-blue-100 text-blue-700;
+          @apply bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300;
         }
 
         .not-active {
-          @apply text-gray-700 hover:bg-gray-200;
+          @apply text-gray-700 dark:text-neutral-300 hover:bg-gray-200 dark:hover:bg-neutral-700;
         }
 
         li {
@@ -321,7 +414,7 @@ body {
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative;
+      @apply flex-1 p-8 bg-white dark:bg-neutral-900 max-w-2xl relative;
 
       li {
         @apply absolute flex items-center flex-col gap-3;
@@ -331,14 +424,14 @@ body {
         }
 
         p {
-          @apply text-sm text-center font-medium w-40;
+          @apply text-sm text-center font-medium w-40 dark:text-white;
         }
       }
     }
   }
 
   #txtfile {
-    @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-md absolute top-36 right-32 bg-white dark:bg-neutral-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -346,7 +439,7 @@ body {
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl absolute top-40 left-2/12 bg-white dark:bg-neutral-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       p {
@@ -355,7 +448,7 @@ body {
     }
 
     .preview {
-      @apply p-2 bg-gray-200 max-h-[70vh];
+      @apply p-2 bg-gray-200 dark:bg-neutral-800 max-h-[70vh];
 
       img {
         @apply w-full h-fit object-contain object-center;

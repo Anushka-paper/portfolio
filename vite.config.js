@@ -17,6 +17,7 @@ export default defineConfig({
       '#api' : resolve(dirname(fileURLToPath(import.meta.url)), 'src/api'),
       '#admin' : resolve(dirname(fileURLToPath(import.meta.url)), 'src/admin'),
       '#utils' : resolve(dirname(fileURLToPath(import.meta.url)), 'src/utils'),
+      '#hooks' : resolve(dirname(fileURLToPath(import.meta.url)), 'src/hooks'),
 
     }
   }
